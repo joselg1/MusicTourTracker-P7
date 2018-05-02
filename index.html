@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MusicTourTracker</title>
+</head>
+<body>
+
+	<form id="artist-form">
+
+		<label for="artist-input">Choose Your Artist</label>
+		<input type="text" id="artist-input">
+		<br>
+		<input id="select-artist" type="submit" value="Go!">
+
+	</form>
+
+	<div id="artist-div"></div>
+
+</body>
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+	
+function searchBandsInTown(artist) {
+
+	// Querying the bandintownapi for selected artist
+	var queryURL = "https://rest.bandsintown.com/artists/" + 
+		artist + "?app_id=codingbootcamp";
+	$.ajax({
+		url:queryURL,
+		method: "GET"
+	}).done(function(response) {
+
+		// Printing the object to console
+		console.log(response);
+
+		// Construction HTML containg artist info
+		var artistName = $("<h1>").text(response.name);
+		var artistURL = $("<a>").attr("href", response.url).append(artistName);
+		var artistImage = $("<img>").attr("src", response.thumb_url);
+		var trackerCount = $("<h2>").text(response.tracker_count + " fans tracking this artist");
+		var upcomingEvents = $("<h2>").text(response.upcoming_event_count + " upcoming events");
+		var goToArtist = $("<a>").attr("href", response.url).text("See Tour Dates");
+
+		// Empty the contents of the artist-div, append the new artist content
+		$("#artist-div").empty();
+		$("#artist-div").append(artistURL, artistImage, trackerCount, upcomingEvents, goToArtist);
+
+	});
+}
+
+// Event handler for user clicking the select-artist button
+$("#select-artist").on("click", function(event) {
+
+	// Preventing the button from tyring to submit the form
+	event.preventDefault();
+
+	//Storing the artist name
+	var artist = $("#artist-input").val();
+
+	// Running the searchBandsInTown function (passing in the artist as an argument)
+	searchBandsInTown(artist);
+});
+
+</script>
+
+</html>
