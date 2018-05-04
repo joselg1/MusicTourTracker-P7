@@ -1,0 +1,28 @@
+html,
+body {
+	background-image: url("https://virtualrealityreporter.com/wp-content/uploads/2017/02/music-brain.jpg");
+}
+
+#artist-form {
+	font-family: Arial;
+	font-weight: bold;
+	font-size: 50px;
+	text-align: center;
+	color: black;
+	background-color: ;
+}
+
+#artist-div {
+	text-align: center;
+}
+
+h1 {
+	color: white;
+	font-family: Arial;	
+}
+
+h2 {
+	color: black;
+	font-family: Arial;
+	background-color: white;
+}

@@ -2,12 +2,14 @@
 <html>
 <head>
 	<title>MusicTourTracker</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 
 	<form id="artist-form">
 
-		<label for="artist-input">Choose Your Artist</label>
+		<label for="artist-input">Choose Your Artist!</label>
+		<br>
 		<input type="text" id="artist-input">
 		<br>
 		<input id="select-artist" type="submit" value="Go!">
@@ -67,5 +69,11 @@ $("#select-artist").on("click", function(event) {
 });
 
 </script>
+
+<!--<script>
+window.onload = function() {
+setInterval(function() { location.reload(); } , 1000);
+};
+</script>-->
 
 </html>
